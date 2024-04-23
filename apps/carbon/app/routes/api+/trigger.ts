@@ -2,10 +2,7 @@ import { triggerClient } from "~/lib/trigger.server";
 import serverRuntime from "@remix-run/server-runtime";
 import type { ActionFunction } from "@remix-run/node";
 
-// Remix will automatically strip files with side effects
-// So you need to *export* your Job definitions like this:
-export * from "~/jobs.server";
-
+// Job registration has been moved to entry.server.tsx;
 export const action: ActionFunction = async ({ request }) => {
   const response = await triggerClient.handleRequest(request);
   if (!response) {
